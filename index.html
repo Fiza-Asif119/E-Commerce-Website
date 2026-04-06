@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-commerce Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- NAVBAR _____________________________ -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg mynav navbar-light p-3 fixed-top">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1 fs-3 brand brandName">Beauty Website</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex myform flex-column flex-lg-row w-100 align-items-lg-center" role="search">
+                        <select id="selectProduct" class="form-select my-1 my-lg-0 me-lg-2" aria-label="Select Category"
+                            onchange="productChange()">
+                            <option value="">Select Category</option>
+                        </select>
+                        <select id="selectBrand" class="form-select my-1 my-lg-0 me-lg-2" aria-label="Select Brand">
+                            <option value="">Select Brand</option>
+                        </select>
+                        <button class="btn btn-outline-dark btn-light mt-2 mt-lg-0" type="button">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- _____________________________CARROUSEL______________________________ -->
+
+    <div id="carouselExampleIndicators" class="carousel slide myhero">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://assets.unileversolutions.com/v1/124548098.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://m.media-amazon.com/images/G/31/img24/Beauty/COOP/Loreal_Paris_COOP_2606._SX900_QL85_.jpg"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.smallflower.com/cdn/shop/articles/German-Beauty-Blog.jpg?v=1603209808"
+                    class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- _________________________ALL PRODUCTS_______________________________ -->
+    <div class="container myproducts">
+        <div class="allProducts">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="allProducts">
+
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script src="app.js"></script>
+</body>
+
+</html>

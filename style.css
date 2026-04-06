@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("https://cdn.wallpapersafari.com/46/33/o1a7qt.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.brandName{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.mynav{
+    background-color: #551E74 !important;
+}
+.myproducts{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+.card img{
+    height: 250px;
+    object-fit: contain;
+}
+.card-img-top{
+    border-bottom: 2px solid black;
+}
+.card{
+    border: 2px solid black;
+}
+.myhero{
+    background-color: aqua !important;
+    margin-top: 4rem;
+}
+.carousel-item{
+    object-fit: contain !important;
+}
+.price{
+    color: #551E74 !important;
+}
+.brand{
+    color: white;
+}
+@media (min-width:992px) {
+    .myform{
+        margin-left: 6rem;
+    }
+}
