@@ -1,49 +1,126 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background-image: url("https://cdn.wallpapersafari.com/46/33/o1a7qt.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #8685AD;
 }
-.brandName{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.mynav {
+    background: #0F0E47;
+    padding: 12px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgb(255, 255, 255);
 }
-.mynav{
-    background-color: #551E74 !important;
+
+.web {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
-.myproducts{
-    margin-top: 6rem;
-    margin-bottom: 6rem;
+
+.brand {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 35px !important;
 }
-.card img{
-    height: 250px;
-    object-fit: contain;
-}
-.card-img-top{
-    border-bottom: 2px solid black;
-}
-.card{
-    border: 2px solid black;
-}
-.myhero{
-    background-color: aqua !important;
-    margin-top: 4rem;
-}
-.carousel-item{
-    object-fit: contain !important;
-}
-.price{
-    color: #551E74 !important;
-}
-.brand{
+.brand:hover{
     color: white;
 }
-@media (min-width:992px) {
-    .myform{
-        margin-left: 6rem;
-    }
+
+.form-select {
+    border-radius: 8px;
+}
+
+.myhero img {
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.myproducts {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+/* .card{
+    background-color: rgb(191, 191, 196);
+} */
+.card img {
+    height: 220px;
+    object-fit: contain !important;
+    padding: 15px;
+}
+
+.card-title{
+    color: #262175;
+}
+
+.price {
+    color: #ffffff !important;
+    font-weight: bold;
+    margin-top: 7px;
+    margin-bottom: 0;
+}
+.icon {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-primary {
+    background: #6C63FF;
+    border: none;
+    border-radius: 8px;
+}
+.img1{
+    object-fit: contain;
+}
+.btn-primary:hover {
+    background: #574fd6;
+}
+.myhero {
+    margin-top: -20px !important;
+}
+
+.carousel {
+    margin-top: 0 !important;
+}
+
+.mainpart {
+    margin-top: 5.4rem!important;
+    padding-top: 0 !important;
+    width: 70% !important;
+}
+.sidebar_heading{
+    font-size: 20px;
+}
+.sidebar{
+    border-radius: 20px;
+}
+.carousel img{
+    border-radius: 20px !important;
+    width: 87% !important;
+}
+.card-footer{
+    background-color: #525081;
+}
+.card-title{
+    color: #262175;
 }
