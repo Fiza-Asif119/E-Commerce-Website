@@ -415,7 +415,8 @@ for (var category in ecommerce) {
         <p class="card-text">${product.description}</p>
       </div>
       <div class="card-footer d-flex justify-content-between align-items-center">
-        <p class="text-body-secondary price">${product.price}/-</p><i class="fa-solid icon fa-cart-arrow-down"></i>
+        <p class="text-body-secondary price">${product.price}/-</p>
+        <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(product)})'></i>
       </div>
     </div>`
                 }
@@ -439,7 +440,8 @@ for (var items in accessories) {
         <p class="card-text">${product.description}</p>
       </div>
       <div class="card-footer d-flex justify-content-between align-items-center">
-        <p class="text-body-secondary price">${product.price}/-</p><i class="fa-solid icon fa-cart-arrow-down"></i>
+        <p class="text-body-secondary price">${product.price}/-</p>
+        <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(product)})'></i>
       </div>
     </div>`
 
@@ -456,7 +458,7 @@ function applyFilters() {
     var allProductsDiv = document.getElementById("allProducts");
     allProductsDiv.innerHTML = "";
 
-    var found = false; 
+    var found = false;
     for (var category in ecommerce) {
 
         if (category === "accessories") continue;
@@ -489,8 +491,12 @@ function applyFilters() {
                                 </div>
                                 <div class="card-footer d-flex justify-content-between align-items-center">
                                     <p class="price">${item.price}/-</p>
-                                    <i class="fa-solid icon fa-cart-arrow-down"></i>
+                                    <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(item)})'></i>
                                 </div>
+                                <div>
+                    <button class="btn btn-outline-dark mt-2 p-1 w-100" onclick="showAlert()">Done</button>
+                    <button class="btn btn-outline-secondary mt-2 w-100" onclick="loadAllProducts()">Go Back</button>
+                    </div>
                             </div>
                         </div>`;
                     }
@@ -520,7 +526,11 @@ function applyFilters() {
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <p class="price">${item.price}/-</p>
-                        <i class="fa-solid icon fa-cart-arrow-down"></i>
+                        <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(product)})'></i>
+                        <div>
+                    <button class="btn btn-outline-dark mt-2 p-1 w-100" onclick="showAlert()">Done</button>
+                    <button class="btn btn-outline-secondary mt-2 w-100" onclick="loadAllProducts()">Go Back</button>
+                    </div>
                     </div>
                 </div>
             </div>`;
@@ -532,5 +542,120 @@ function applyFilters() {
             title: "Oops...",
             text: "No products found for selected filters!",
         });
+    }
+}
+//  _____________________________________________________________ADD TO CART______________________________________________
+function addToCart(product) {
+
+    var allProductsDiv = document.getElementById("allProducts");
+    allProductsDiv.innerHTML = "";
+
+    var quantity = 1;
+    allProductsDiv.innerHTML = `
+        <div class="col-12 d-flex justify-content-center">
+            <div class="card" style="width: 22rem;">
+                <img src="${product.src}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p>${product.description}</p>
+
+                    <h4 id="totalPrice">${product.price} PKR</h4>
+
+                    <div class="d-flex justify-content-center align-items-center mt-3">
+                        <button class="btn btn-dark" onclick="decrease()">-</button>
+                        <span id="qty" class="mx-3">${quantity}</span>
+                        <button class="btn btn-dark" onclick="increase()">+</button>
+                    </div>
+                    <div>
+                    <button class="btn btn-outline-dark mt-2 p-1 w-100" onclick="showAlert()">Done</button>
+                    <button class="btn btn-outline-secondary mt-2 w-100" onclick="loadAllProducts()">Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // _____________________________Store globally so + - can use it
+    window.currentProduct = product;
+    window.quantity = quantity;
+}
+function showAlert() {
+    Swal.fire({
+        title: "DONE!",
+        text: "add to cart successfully done!",
+        icon: "success"
+    });
+}
+function loadAllProducts(){
+    var allProductsDiv = document.getElementById("allProducts");
+    allProductsDiv.innerHTML = "";
+    var allProducts = document.getElementById("allProducts");
+for (var category in ecommerce) {
+    // console.log(category);
+    for (var subCate in ecommerce[category]) {
+        // console.log(subCate);
+        for (var type in ecommerce[category][subCate]) {
+            // console.log(type);
+            for (var brand in ecommerce[category][subCate][type]) {
+                // console.log(brand);
+                var product = ecommerce[category][subCate][type][brand]
+                // console.log(product);
+                if (product.name && product.price) {
+                    allProducts.innerHTML += `<div class="col">
+    <div class="card h-100">
+      <img src="${product.src}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">${product.name}</h5>
+        <p class="card-text">${product.description}</p>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        <p class="text-body-secondary price">${product.price}/-</p>
+        <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(product)})'></i>
+      </div>
+    </div>`
+                }
+            }
+        }
+
+    }
+
+}
+
+var accessories = ecommerce.accessories;
+// console.log(accessories);
+for (var items in accessories) {
+    // console.log(items);
+    var product = accessories[items];
+    allProducts.innerHTML += `<div class="col">
+    <div class="card h-100">
+      <img src="${product.src}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">${product.name}</h5>
+        <p class="card-text">${product.description}</p>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        <p class="text-body-secondary price">${product.price}/-</p>
+        <i class="fa-solid icon fa-cart-arrow-down" onclick='addToCart(${JSON.stringify(product)})'></i>
+      </div>
+    </div>`
+
+}
+}
+//  _____________________________________________________________INCREMENT______________________________________________
+function increase() {
+    window.quantity++;
+
+    document.getElementById("qty").innerText = window.quantity;
+    document.getElementById("totalPrice").innerText =
+        window.currentProduct.price * window.quantity + " PKR";
+}
+//  _____________________________________________________________DECREMENT______________________________________________
+function decrease() {
+    if (window.quantity > 1) {
+        window.quantity--;
+
+        document.getElementById("qty").innerText = window.quantity;
+        document.getElementById("totalPrice").innerText =
+            window.currentProduct.price * window.quantity + " PKR";
     }
 }
